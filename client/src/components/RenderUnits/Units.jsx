@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Unit from "./Unit";
 
 const Units = () => {
@@ -37,9 +37,9 @@ const Units = () => {
         ) : (
           <>
             <button className="forms__submit">
-              <NavLink className="navlink" to={"/create"}>
+              <Link className="navlink" to={"/create"}>
                 Add new unit
-              </NavLink>
+              </Link>
             </button>
             <div className="home__units__list">
               {units.map((unit) => {

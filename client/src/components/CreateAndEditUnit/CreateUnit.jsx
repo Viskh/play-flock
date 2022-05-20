@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const CreateUnit = () => {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state);
+  const { error } = useSelector((state) => state);
 
   const [currentHp, setCurrentHp] = useState("");
   const [maxHp, setMaxHp] = useState("");
@@ -13,6 +13,7 @@ const CreateUnit = () => {
   const [magResist, setMagResist] = useState("");
   const [coordinateX, setCoordinateX] = useState("");
   const [coordinateY, setCoordinateY] = useState("");
+  const [unitClass, setUnitClass] = useState("воин");
 
   const createUnit = async () => {
     const options = {
@@ -21,6 +22,7 @@ const CreateUnit = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        unitClass,
         currentHp,
         maxHp,
         currentMana,
@@ -50,6 +52,7 @@ const CreateUnit = () => {
     setMagResist("");
     setCoordinateX("");
     setCoordinateY("");
+    setUnitClass('')
   };
 
   if (error) {
@@ -102,8 +105,13 @@ const CreateUnit = () => {
           placeholder="magResist"
           type="text"
         />
-        <select name="class" id="">
-          Voin
+        <select
+          value={unitClass}
+          onChange={(e) => setUnitClass(e.target.value)}
+        >
+          <option value="воин">воин</option>
+          <option value="лучник">лучник</option>
+          <option value="волшебник">волшебник</option>
         </select>
 
         <div className="two__forms">
@@ -120,13 +128,9 @@ const CreateUnit = () => {
             type="text"
           />
         </div>
-        {loading ? (
-          <div className="preloader">Loading...</div>
-        ) : (
-          <button onClick={createUnit} className="forms__submit">
-            Create
-          </button>
-        )}
+        <button onClick={createUnit} className="forms__submit">
+          Create
+        </button>
       </div>
     </div>
   );

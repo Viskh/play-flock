@@ -57,6 +57,7 @@ button {
   border: 1px solid;
   border-radius: 1vh;
   margin: 0 auto;
+  
 }
 
 button:hover {
@@ -67,6 +68,11 @@ button:hover {
 .navlink {
   text-decoration: none;
   color: inherit;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .home__units__list {

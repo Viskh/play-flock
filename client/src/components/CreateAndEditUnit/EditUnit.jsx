@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const EditUnit = () => {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state);
+  const { error } = useSelector((state) => state);
 
   const [unitId, setUnitId] = useState("");
   const [currentHp, setCurrentHp] = useState("");
@@ -14,6 +14,7 @@ const EditUnit = () => {
   const [magResist, setMagResist] = useState("");
   const [coordinateX, setCoordinateX] = useState("");
   const [coordinateY, setCoordinateY] = useState("");
+  const [unitClass, setUnitClass] = useState("воин");
 
   const editUnit = async () => {
     const options = {
@@ -22,6 +23,7 @@ const EditUnit = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        unitClass,
         currentHp,
         maxHp,
         currentMana,
@@ -112,8 +114,13 @@ const EditUnit = () => {
           placeholder="magResist"
           type="text"
         />
-        <select name="class" id="">
-          Voin
+        <select
+          value={unitClass}
+          onChange={(e) => setUnitClass(e.target.value)}
+        >
+          <option value="воин">воин</option>
+          <option value="лучник">лучник</option>
+          <option value="волшебник">волшебник</option>
         </select>
 
         <div className="two__forms">
@@ -131,13 +138,9 @@ const EditUnit = () => {
           />
         </div>
 
-        {loading ? (
-          <div className="preloader">Loading...</div>
-        ) : (
-          <button onClick={editUnit} className="forms__submit">
-            Reset
-          </button>
-        )}
+        <button onClick={editUnit} className="forms__submit">
+          Reset
+        </button>
       </div>
     </div>
   );

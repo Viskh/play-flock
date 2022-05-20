@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Unit = ({ unit }) => {
   const dispatch = useDispatch();
@@ -39,9 +39,9 @@ const Unit = ({ unit }) => {
       </div>
       <div className="unit__btn">
         <button>
-          <NavLink className="navlink" to={"/edit"}>
+          <Link className="navlink" to={"/edit"}>
             Edit
-          </NavLink>
+          </Link>
         </button>
 
         {loading ? (
