@@ -13,7 +13,7 @@ const Unit = ({ unit }) => {
     try {
       dispatch({ type: "remove/unit/pending" });
 
-      await fetch(`http://localhost:5000/unit/remove/${id}`, options);
+      await fetch(`/unit/remove/${id}`, options);
 
       dispatch({ type: "remove/unit/fulfilled", payload: id });
     } catch (error) {

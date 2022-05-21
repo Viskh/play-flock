@@ -36,7 +36,7 @@ const CreateUnit = () => {
     try {
       dispatch({ type: "create/unit/pending" });
 
-      const res = await fetch("http://localhost:5000/unit/create", options);
+      const res = await fetch("/unit/create", options);
       const unit = await res.json();
 
       dispatch({ type: "create/unit/fulfilled", payload: unit });
@@ -52,7 +52,7 @@ const CreateUnit = () => {
     setMagResist("");
     setCoordinateX("");
     setCoordinateY("");
-    setUnitClass('')
+    setUnitClass("");
   };
 
   if (error) {

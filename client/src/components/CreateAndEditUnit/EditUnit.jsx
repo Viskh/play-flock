@@ -37,10 +37,7 @@ const EditUnit = () => {
     try {
       dispatch({ type: "edit/unit/pending" });
 
-      const res = await fetch(
-        `http://localhost:5000/unit/edit/${unitId}`,
-        options
-      );
+      const res = await fetch(`/unit/edit/${unitId}`, options);
       const unit = await res.json();
 
       dispatch({ type: "edit/unit/fulfilled", payload: unit });

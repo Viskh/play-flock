@@ -12,7 +12,7 @@ const Units = () => {
       try {
         dispatch({ type: "load/units/pending" });
 
-        const res = await fetch("http://localhost:5000/unit/list");
+        const res = await fetch("/unit/list");
         const units = await res.json();
 
         dispatch({ type: "load/units/fulfilled", payload: units });
@@ -43,7 +43,7 @@ const Units = () => {
             </button>
             <div className="home__units__list">
               {units.map((unit) => {
-                return <Unit unit={unit} />;
+                return <Unit key={unit._id} unit={unit} />;
               })}
             </div>
           </>
