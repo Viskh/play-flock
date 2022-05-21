@@ -4,7 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4040;
 
 app.use(cors());
 app.use(express.json());
@@ -15,7 +15,7 @@ const connected = async () => {
     await mongoose.connect(process.env.MONGO_SERVER);
     console.log("Подключение к MongoDB прошло успешно!");
     app.listen(port, () => {
-      console.log("Server has been started");
+      console.log(`Сервер успешно запущен на порте: ${port}`);
     });
   } catch (e) {
     console.log("Не удалось подключиться к MongoDB!");
